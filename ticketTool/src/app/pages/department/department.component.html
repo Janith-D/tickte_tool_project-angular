@@ -1,1 +1,74 @@
-<p>department works!</p>
+<div class="row">
+  <div class="col-8">
+    <div class="card">
+      <div class="card-header bg-success">
+        Department List
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <table class="table table-bordered">
+                <thead>
+                  <tr class="text-center">
+                    <th>Index No</th>
+                    <th>Department Name</th>
+                    <th>Date On</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for(item of deptList; track $index){
+                    <tr>
+                      <td>{{$index+1}}</td>
+                      <td>{{item.deptName}}</td>
+                      <td>{{item.createdDate | date:'dd-MMM-yyyy'}}</td>
+                      <td class="text-center">
+                        <button class="btn btn-primary" (click)="onEdit(item)">Edit</button>
+                        <button class="btn btn-danger" (click)="onDelete(item.deptId)">Delete</button>
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header bg-success">
+        New Department
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <label>Department Name</label>
+            <input type="text" [(ngModel)]="newDeptList.deptName" class="form-control">
+          </div>
+          @if(this.newDeptList.deptId == 0){
+            <div class="col-12">
+              <label>Date Creation</label>
+              <input type="date" [(ngModel)]="newDeptList.createdDate" class="form-control">
+            </div>
+          }
+
+        </div>
+        <div class="row pt-3">
+          <div class="col-6 text-center">
+            <button class="btn btn-secondary">Reset</button>
+          </div>
+          @if(this.newDeptList.deptId == 0){
+            <div class="col-6 text-center">
+              <button class="btn btn-success" (click)="saveDept()"> Save Dept</button>
+            </div>
+          } @else {
+            <div class="col-6 text-center">
+              <button class="btn btn-warning" (click)="editDept()">Update</button>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
