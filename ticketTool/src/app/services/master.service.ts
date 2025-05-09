@@ -6,7 +6,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class MasterService {
 
-  apiUrl :string ="https://freeapi.miniprojectideas.com/api/TicketsNew/";
+  apiUrl :string ="/api/TicketsNew/";
 
   constructor(private http: HttpClient) { }
 
@@ -24,5 +24,29 @@ export class MasterService {
   }
   deleteDept(id:number){
     return this.http.delete(`${this.apiUrl}DeleteDepartment?id=${id}`);
+  }
+  getPCategory(){
+    return this.http.get(`${this.apiUrl}GetParentCategory`);
+  }
+  createPCategory(obj:any){
+    return this.http.post(`${this.apiUrl}CreateParentCategory`,obj);
+  }
+  updatePCategory(obj:any){
+    return this.http.put(`${this.apiUrl}UpdateParentCategory`,obj);
+  }
+  deletePCategory(id:number){
+    return this.http.delete(`${this.apiUrl}DeleteParentCategory?id=${id}`);
+  }
+  getCCategory(){
+    return this.http.get(`${this.apiUrl}GetChildCategory`)
+  }
+  createCCategory(obj:any){
+    return this.http.post(`${this.apiUrl}CreateChildCategory`,obj);
+  }
+  updateCCategory(obj:any){
+    return this.http.put(`${this.apiUrl}UpdateChildCategory`,obj);
+  }
+  deleteCCategory(id:number){
+    return this.http.delete(`${this.apiUrl}DeleteChildCategory?id=${id}`);
   }
 }

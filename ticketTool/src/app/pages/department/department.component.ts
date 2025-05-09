@@ -64,5 +64,7 @@ export class DepartmentComponent implements OnInit {
       })
     }
   }
-
+  onreset(){
+    this.newDeptList.deptName ="";
+  }
 }

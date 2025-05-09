@@ -63,7 +63,8 @@
               "buildTarget": "ticketTool:build:production"
             },
             "development": {
-              "buildTarget": "ticketTool:build:development"
+              "buildTarget": "ticketTool:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
